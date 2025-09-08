@@ -1,6 +1,3 @@
-# quantum-decision-qubit
-Система поддержки принятия сложных решений с использованием квантово-вдохновленных алгоритмов, где каждая переменная представлена как "кубит" с вероятностным состоянием.
-
 # Quantum Decision Qubit Engine
 
 [![Tech Stack](https://img.shields.io/badge/Tech-JavaScript%20%7C%20Qubit_Simulation%20%7C%20Decision_Engine-purple)]
