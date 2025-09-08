@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Decision Qubit Engine</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <div class="qubit-icon">
+                    <div class="sphere">
+                        <div class="axis-x"></div>
+                        <div class="axis-y"></div>
+                        <div class="axis-z"></div>
+                        <div class="qubit-dot"></div>
+                    </div>
+                </div>
+                <h1>Quantum Decision Qubit Engine</h1>
+            </div>
+            <p class="tagline">Принимайте решения с квантовой точностью</p>
+        </header>
+        
+        <div class="main-content">
+            <div class="setup-panel">
+                <h2>Настройка решения</h2>
+                
+                <div class="input-group">
+                    <label for="decisionName">Название решения:</label>
+                    <input type="text" id="decisionName" value="Запуск нового продукта" placeholder="Введите название решения">
+                </div>
+                
+                <div class="input-group">
+                    <label>Переменные решения:</label>
+                    <div id="variables-container">
+                        <div class="variable-item">
+                            <input type="text" class="variable-name" value="Рынок" placeholder="Название переменной">
+                            <select class="variable-type">
+                                <option value="market">Рынок</option>
+                                <option value="resource">Ресурсы</option>
+                                <option value="time">Сроки</option>
+                                <option value="cost" selected>Стоимость</option>
+                                <option value="quality">Качество</option>
+                            </select>
+                            <input type="range" class="variable-weight" min="1" max="10" value="7">
+                            <span class="weight-value">7</span>
+                            <button onclick="removeVariable(this)" class="remove-btn">✕</button>
+                        </div>
+                    </div>
+                    <button onclick="addVariable()" class="secondary">+ Добавить переменную</button>
+                </div>
+                
+                <div class="input-group">
+                    <label>Варианты решения:</label>
+                    <div id="options-container">
+                        <div class="option-item">
+                            <input type="text" class="option-name" value="Вариант A" placeholder="Название варианта">
+                            <div class="option-variables"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button id="runAnalysis" class="primary-btn">
+                    <span class="icon">🔮</span> Запустить квантовый анализ
+                </button>
+                
+                <div id="status" class="status-panel"></div>
+            </div>
+            
+            <div class="results-panel" id="resultsPanel" style="display:none;">
+                <h2>Результаты анализа</h2>
+                
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-label">Оптимальный выбор</div>
+                        <div class="metric-value" id="optimalChoice">-</div>
+                        <div class="metric-description">С вероятностью 85%</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Уровень неопределенности</div>
+                        <div class="metric-value" id="uncertaintyLevel">0%</div>
+                        <div class="metric-description">Влияние на решение</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Чувствительность</div>
+                        <div class="metric-value" id="sensitivity">0</div>
+                        <div class="metric-description">Ключевые переменные</div>
+                    </div>
+                </div>
+                
+                <div class="visualization-container">
+                    <div class="tabs">
+                        <button class="tab-btn active" data-tab="bloch">Сфера Блоха</button>
+                        <button class="tab-btn" data-tab="probability">Вероятностный анализ</button>
+                        <button class="tab-btn" data-tab="recommendations">Рекомендации</button>
+                    </div>
+                    
+                    <div id="blochView" class="tab-content active">
+                        <div id="blochSphere" class="chart"></div>
+                        <p class="quantum-explanation">
+                            Визуализация решения на сфере Блоха. Позиция точки показывает текущее квантовое состояние решения, 
+                            а цвет отражает вероятность каждого варианта.
+                        </p>
+                    </div>
+                    
+                    <div id="probabilityView" class="tab-content" style="display:none;">
+                        <div id="probabilityChart" class="chart"></div>
+                    </div>
+                    
+                    <div id="recommendationsView" class="tab-content" style="display:none;">
+                        <div class="recommendations-list" id="recommendationsList"></div>
+                    </div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button id="exportPDF" class="secondary-btn">
+                        <span class="icon">📥</span> Экспорт отчета PDF
+                    </button>
+                    <button id="sensitivityAnalysis" class="primary-btn">
+                        <span class="icon">🔍</span> Анализ чувствительности
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Quantum Decision Qubit Engine v1.0 &copy; 2025 | Принятие решений с квантовой точностью</p>
+        </footer>
+    </div>
+    
+    <script src="qd-engine.js"></script>
+    <script src="decision-visualization.js"></script>
+</body>
+</html>
